@@ -1,0 +1,375 @@
+/* -------------------------------------------------------- */
+/* VARIABLES */
+/* -------------------------------------------------------- */
+
+:root {
+  /* Background Colors: */
+  --background-color: rgb(40, 40, 40);
+  --content-background-color: rgb(40, 40, 40);
+  --sidebar-background-color: rgb(40, 40, 40);
+
+  /* Text Colors: */
+  --text-color: #CDA3DC;
+  --sidebar-text-color: #8FF0A4;
+  --link-color: #3026e8;
+  --link-color-hover: #7780ec;
+
+  /* Text: */
+  --font: Arial, sans-serif;
+  --heading-font: Georgia, serif;
+  --font-size: 14px;
+
+  /* Other Settings: */
+  --margin: 10px;
+  --padding: 15px;
+  --border: 2px solid beige;
+  --round-borders: 0px;
+  --sidebar-width: 150px;
+}
+
+/* -------------------------------------------------------- */
+/* BASICS */
+/* -------------------------------------------------------- */
+
+body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  font-size: var(--font-size);
+  margin: 0;
+  padding: var(--margin);
+  color: var(--text-color);
+  font-family: var(--font);
+  line-height: 1.2;
+  background: var(--background-color);
+  background-image: url("./backgrounds/anistars.gif");
+}
+
+::selection {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+smaller {
+  font-size: xx-small;
+}
+
+/* -------------------------------------------------------- */
+/* LAYOUT */
+/* -------------------------------------------------------- */
+
+.layout {
+  width: 800px;
+  display: grid;
+  grid-gap: var(--margin);
+  grid-template:
+    "header header" auto 
+    "leftSidebar main" auto 
+    "footer footer" auto 
+    / var(--sidebar-width) auto;
+}
+
+main {
+  grid-area: main;
+  overflow-y: auto;
+  padding: var(--padding);
+  background: var(--content-background-color);
+  border: var(--border);
+  border-radius: var(--round-borders);
+}
+
+/* -------------------------------------------------------- */
+/* HEADER */
+/* -------------------------------------------------------- */
+
+header {
+  grid-area: header;
+  font-size: 1.2em;
+  border: var(--border);
+  border-radius: var(--round-borders);
+  background: var(--content-background-color);
+  margin-top: 150px;
+  text-align: center;
+}
+
+.header-content {
+  padding: var(--padding)
+}
+
+.header-title {
+  font-family: var(--heading-font);
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.header-image img {
+  width: 100%;
+  height: auto;
+}
+
+/* -------------------------------------------------------- */
+/* SIDEBARS */
+/* -------------------------------------------------------- */
+
+aside {
+  grid-area: aside;
+  font-size: medium;
+  border: var(--border);
+  border-radius: var(--round-borders);
+  overflow: hidden;
+  background: var(--sidebar-background-color);
+  padding: var(--padding);
+  color: var(--sidebar-text-color);
+}
+
+aside a:link {
+  color: var(--sidebar-text-color)
+}
+
+aside a:visited {
+  color: #2ec27d;
+}
+
+aside a:hover {
+  color: var(--link-color-hover)
+}
+
+aside h4 {
+  font-family: var(--heading-font);
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: 2;
+  text-align: center;
+  line-break: auto;
+  display: block;
+  color: var(--text-color);
+}
+
+aside.left-sidebar {
+  grid-area: leftSidebar;
+}
+
+div.container {
+  display: flex;
+  width: auto;
+  height: 1em;
+  padding: 0;
+  padding-bottom: .25em;
+  padding-left: .4em;
+  border: 0;
+}
+
+div.shrine-text {
+  flex-grow: 1;
+  height: auto;
+  padding: 0;
+  border: 0;
+  text-align: center;
+  display: block;
+  margin-left: .125em;
+}
+
+div.frame {
+  width: 1em;
+  height: 1em;
+  padding: 0;
+  border: 0;
+}
+
+div.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  object-position: center;
+}
+
+/* -------------------------------------------------------- */
+/* CONTENT */
+/* -------------------------------------------------------- */
+
+main {
+  line-height: 1.5;
+  overflow-y: auto;
+  max-height: 50vh;
+}
+
+main a, main a:visited {
+  color: var(--link-color);
+}
+
+main a:hover, main a:focus {
+  color: var(--link-color-hover);
+  text-decoration-style: wavy;
+}
+
+main p,
+main .image,
+main .full-width-image,
+main .two-columns {
+  margin: 0.75em 0;
+}
+
+main ol,
+main ul {
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+}
+
+main ol li,
+main ul li {
+  margin-bottom: 0.2em;
+  line-height: 1.3;
+}
+
+main ol {
+  padding-left: 2em;
+}
+
+main blockquote {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin: 1em 0;
+  border-radius: 10px;
+}
+
+main pre {
+  margin: 1em 0 1.5em;
+}
+
+main code {
+  text-transform: none;
+}
+
+main center {
+  margin: 1em 0;
+  padding: 0 1em;
+}
+
+main hr {
+  border: 0;
+  border-top: var(--border);
+  margin: 1.5em 0;
+}
+
+/* HEADINGS: */
+
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6 {
+  font-family: var(--heading-font);
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+main h1:first-child,
+main h2:first-child,
+main h3:first-child,
+main h4:first-child,
+main h5:first-child,
+main h6:first-child {
+  margin-top: 0;
+}
+
+main h1 {
+  font-size: 1.5em;
+}
+
+main h2 {
+  font-size: 1.4em;
+}
+
+main h3 {
+  font-size: 1.3em;
+}
+
+main h4 {
+  font-size: 1.2em;
+}
+
+main h5 {
+  font-size: 1.1em;
+}
+
+main h6 {
+  font-size: 1em;
+}
+
+/* -------------------------------------------------------- */
+/* FOOTER */
+/* -------------------------------------------------------- */
+
+footer {
+  grid-area: footer;
+  border: var(--border);
+  border-radius: var(--round-borders);
+  overflow: hidden;
+  font-size: 0.75em;
+  padding: 15px;
+  background: var(--content-background-color);
+  display: flex;
+  justify-content: center;
+}
+
+/* -------------------------------------------------------- */
+/* MOBILE RESPONSIVE (Genuienly no idea how this works)*/ 
+/* -------------------------------------------------------- */
+
+/* CSS Code for devices < 600px */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  .layout {
+    width: 100%;
+    grid-template: "header" auto  "main" auto "leftSidebar" auto "footer" auto / 1fr;
+    /* Confused by the grid? Check out my tutorial: https://petrapixel.neocities.org/coding/positioning-tutorial#grid */
+  }
+
+
+  .right-sidebar {
+    display: none;
+  }
+
+  aside {
+    border-bottom: 1px solid;
+    padding: 9px;
+    font-size: 0.9em;
+  }
+
+
+  nav {
+    padding: 0;
+  }
+
+  nav > ul {
+    padding-top: 0.5em;
+  }
+
+  nav > ul li > a,
+  nav > ul li > details summary,
+  nav > ul li > strong {
+    padding: 0.5em;
+  }
+
+  main {
+    max-height: none;
+    padding: 15px;
+  }
+
+  .images {
+    flex-wrap: wrap;
+  }
+
+  .images img {
+    width: 100%;
+  }
+
+  #skip-to-content-link {
+  font-size: 1rem;
+  }
+}
