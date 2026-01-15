@@ -25,8 +25,16 @@
   --border: 2px solid beige;
   --round-borders: 0px;
   --sidebar-width: 150px;
-}
 
+  /* Directories: */
+  --root-dir: "https://hazel410.neocities.org/";
+  --src-dir: var(--root-dir) + "src/"; 
+  --backgrounds-dir: var(--src-dir) + "backgrounds/";
+  --background-img-dir: var(--backgrounds-dir) + "anistars.gif";
+  --buttons-dir: var(--src-dir) + "buttons/";
+  --javascript-dir: var(--src-dir) + "javascript/";
+  --shrines-dir: var(--src-dir) + ."shrines/"; 
+}
 /* -------------------------------------------------------- */
 /* BASICS */
 /* -------------------------------------------------------- */
@@ -43,7 +51,7 @@ body {
   font-family: var(--font);
   line-height: 1.2;
   background: var(--background-color);
-  background-image: url("./backgrounds/anistars.gif");
+  background-image: url(--background-img-dir);
 }
 
 ::selection {
@@ -88,7 +96,7 @@ header {
   border: var(--border);
   border-radius: var(--round-borders);
   background: var(--content-background-color);
-  margin-top: 150px;
+  margin-top: 0;
   text-align: center;
 }
 
