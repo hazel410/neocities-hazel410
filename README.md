@@ -1,26 +1,23 @@
 # directory structure
 ```
 .
-├── src/
-│   ├── backgrounds/
-│   ├── buttons/
-│   ├── javascript/
-│   └──shrines/
+├── backgrounds/
+├── buttons/
+├── shrine-icons/
 ├── .gitignore
 ├── favicon.png
 ├── index.html
+├── ex1.html
+├── ex2.html
+├── ...
+├── not_found.html
 ├── README.md
 ├── robots.txt
+├── static-elements.js
 └── style.css
 ```
 
 # TODO
 TASKS:
-- finish refactor to js literals
-- finish navbar
-- finish footer
-- finish header
-- begin content pages
-
-ISSUES:
-- is the dir structure fine?
+- finish statics
+- begin content

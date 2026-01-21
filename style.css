@@ -25,16 +25,9 @@
   --border: 2px solid beige;
   --round-borders: 0px;
   --sidebar-width: 150px;
-
-  /* Directories: */
-  --root-dir: "https://hazel410.neocities.org/";
-  --src-dir: var(--root-dir) + "src/"; 
-  --backgrounds-dir: var(--src-dir) + "backgrounds/";
-  --background-img-dir: var(--backgrounds-dir) + "anistars.gif";
-  --buttons-dir: var(--src-dir) + "buttons/";
-  --javascript-dir: var(--src-dir) + "javascript/";
-  --shrines-dir: var(--src-dir) + ."shrines/"; 
+  --overscroll-behavior: none;
 }
+
 /* -------------------------------------------------------- */
 /* BASICS */
 /* -------------------------------------------------------- */
@@ -50,8 +43,8 @@ body {
   color: var(--text-color);
   font-family: var(--font);
   line-height: 1.2;
-  background: var(--background-color);
-  background-image: url(--background-img-dir);
+  background-image: url("./backgrounds/anistars.gif");
+  background-attachment: fixed;
 }
 
 ::selection {
@@ -96,8 +89,30 @@ header {
   border: var(--border);
   border-radius: var(--round-borders);
   background: var(--content-background-color);
-  margin-top: 0;
+  margin-top: 150px;
   text-align: center;
+}
+
+header h3 {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-bottom: .25em;
+  line-height: 1.5;
+  text-align: center;
+  line-break: auto;
+  display: block;
+  text-decoration: wavy;
+  color: var(--sidebar-text-color);
+}
+
+header h5 {
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: .75;
+  text-align: center;
+  line-break: auto;
+  display: block;
+  font-weight: normal;
 }
 
 .header-content {
@@ -326,7 +341,6 @@ footer {
 /* MOBILE RESPONSIVE (Genuienly no idea how this works)*/ 
 /* -------------------------------------------------------- */
 
-/* CSS Code for devices < 600px */
 @media (max-width: 600px) {
   body {
     font-size: 14px;
@@ -335,7 +349,6 @@ footer {
   .layout {
     width: 100%;
     grid-template: "header" auto  "main" auto "leftSidebar" auto "footer" auto / 1fr;
-    /* Confused by the grid? Check out my tutorial: https://petrapixel.neocities.org/coding/positioning-tutorial#grid */
   }
 
 

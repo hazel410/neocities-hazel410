@@ -1,24 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <!-- META INFO -->
-    <title>Hazel's Hideaway</title>
-    <meta content="hazel410 personal website" name="Hazel's Hideaway" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="./favicon.png" rel="icon" type="image/x-icon" />
-    <link href="./style.css" rel="stylesheet" />
-    
-    <!-- CONFIGURE LOCATION -->
-    <script src="./src/javascript/checkEnv.js"></script>
-    <script>checkEnv();</script>
-
+  <head id="metaJS">
     <!-- DECLARING SCRIPTS -->
-    <script src="./src/javascript/header.js"></script>
-    <script src="./src/javascript/navbar.js"></script>
-    <script src="./src/javascript/footer.js"></script>
-    
+    <script src="./static-elements.js"></script>
+
+    <!-- META INFO -->
+    <script>loadMeta("metaJS");</script>
   </head>
   
   <body>
@@ -28,13 +16,15 @@
         
       </main>
 
-      <!-- PERSISTENT CONTENT -->
+      <!-- HEADER -->
       <header>
         <div class="header-content">
           <div id="headerJS"></div>
-          <script>loadHeader("headerJS");</script>
+          <script>loadHeader("headerJS", {h2: "(Home)"});</script>
         </div>
       </header>
+
+      <!-- PERSISTENT CONTENT -->
       <aside class="left-sidebar">
         <div id="navbarJS"></div>
         <script>loadNavbar("navbarJS");</script>
@@ -43,8 +33,6 @@
         <div id="footerJS"></div>
         <script>loadFooter("footerJS")</script>
       </footer>
-    
     </div>
   </body>
-
 </html>
