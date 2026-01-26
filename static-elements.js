@@ -79,35 +79,27 @@ function loadNavbar(doc) {
 
   // SHRINES
   html += /* html */`
-    <h4>☆ SHRINES ☆</h4>
+    <h4>&#9734 SHRINES &#9734</h4>
     `;
     
   for (let shrine of shrines){
     let shrinePNG =  './shrine-icons/' + shrine + '.png' ;
     let shrineHTML = './' + shrine + '.html';
     let shrineNAME = capitalize(shrine);
-    
-    html += /* html */`
-    <div class=container>
-      <div class=frame>
-        <a href=${shrineHTML} title="${shrineNAME} :D"><img src="${shrinePNG}"></a>
-      </div>
-      <div class=shrine-text>
-        <a href=${shrineHTML} title="${shrineNAME} :D">${shrineNAME}</a>
-      </div>
-    </div>
-    `
+    html += getImgBullet(shrinePNG, shrineNAME, shrineHTML)
   }
 
   // INFO
   html += /* html */`
-    <h4>☆ INFO ☆</h4>
+    <h4>&#9734 INFO &#9734</h4>
     `;
 
   // OTHER
   html += /* html */`
-    <h4>☆ OTHER ☆</h4>
+    <h4>&#9734 OTHER &#9734</h4>
     `;
+
+    html += /* html */ getImgBullet("./favicon.png", "Home", "index.html")
 
   // END
   document.getElementById(doc).innerHTML = html;
