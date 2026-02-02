@@ -20,3 +20,4 @@ TASKS:
 - https://codepen.io/sadness97/full/dPoEqNN
 - https://bettysgraphics.neocities.org/backgrounds
 - sadgirl?
+- https://nenrikido.neocities.org/blog/post/deploy-site/
