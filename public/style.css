@@ -14,10 +14,11 @@
   --cream: #f5f5dc;
 
   /* Background Colors: */
-  --background-color: var(--off-black);
-  --content-background-color: var(--off-black);
-  --sidebar-background-color: var(--off-black);
-  --footer-background-color: var(--off-black);
+  --global-background: var(--off-black);
+  --background-color: var(--global-background);
+  --content-background-color: var(--global-background);
+  --sidebar-background-color: var(--global-background);
+  --footer-background-color: var(--global-background);
 
   /* Text Colors: */
   --text-color: var(--cream);
@@ -34,11 +35,12 @@
 
   /* Other Settings: */
   --margin: 10px;
+  --grid-gap: 5px;
   --padding: 15px;
-  --border: 2px solid var(--grape-purple);
+  --double-border: 4px double var(--grape-purple);
+  --single-border: 2px solid var(--grape-purple);
   --round-borders: 0px;
-  --sidebar-width: 150px;
-  --overscroll-behavior: none;
+  --sidebar-width: 160px;
 }
 
 /* -------------------------------------------------------- */
@@ -58,6 +60,7 @@ body {
   line-height: 1.2;
   background-image: url("./backgrounds/anistars.gif");
   background-attachment: fixed;
+  overscroll-behavior: none;
 }
 
 ::selection {
@@ -73,9 +76,9 @@ smaller {
 /* -------------------------------------------------------- */
 
 .layout {
-  width: 800px;
+  width: 1000px;
   display: grid;
-  grid-gap: var(--margin);
+  grid-gap: var(--grid-gap);
   grid-template:
     "header header" auto 
     "leftSidebar main" auto 
@@ -88,7 +91,7 @@ main {
   overflow-y: auto;
   padding: var(--padding);
   background: var(--content-background-color);
-  border: var(--border);
+  border: var(--double-border);
   border-radius: var(--round-borders);
 }
 
@@ -99,10 +102,10 @@ main {
 header {
   grid-area: header;
   font-size: 1.2em;
-  border: var(--border);
+  border: var(--double-border);
   border-radius: var(--round-borders);
-  background: var(--content-background-color);
-  margin-top: 150px;
+  background: var(--global-background);
+  margin-top: 75px;
   text-align: center;
 }
 
@@ -152,7 +155,7 @@ header h5 {
 aside {
   grid-area: aside;
   font-size: medium;
-  border: var(--border);
+  border: var(--double-border);
   border-radius: var(--round-borders);
   overflow: hidden;
   background: var(--sidebar-background-color);
@@ -197,7 +200,7 @@ aside div.container {
   border: 0;
 }
 
-aside div.shrine-text {
+aside div.nav-text {
   flex-grow: 1;
   height: auto;
   padding: 0;
@@ -228,7 +231,8 @@ aside div.frame img {
 main {
   line-height: 1.5;
   overflow-y: auto;
-  max-height: 50vh;
+  min-height: 50vh;
+  max-height: 60vh;
 }
 
 main a, main a:visited {
@@ -240,26 +244,32 @@ main a:hover, main a:focus {
   text-decoration-style: wavy;
 }
 
-main div.blogEntry {
-  width: 100%;
-  height: auto;
-  font-size: medium;
+main div.contentGrid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  column-gap: 10px;
+}
+
+main div.gridEntry {
+  width: auto;
+  border: 20px solid transparent;
+  /* border-image: url(./other-imgs/red-sparkle.gif) 30 30 round; */
+  overflow: auto;
+  margin: 0px;
 }
 
 main div.blogTitle {
   font-weight: bold;
   font-size: xx-large;
-  border: var(--border);
-  padding: 5px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  padding-left: 10px;
 }
 
 main div.blogText {
-  margin-left: 20px;
+  border-top: var(--double-border);
+  padding-top: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
-
-
 
 /* -------------------------------------------------------- */
 /* FOOTER */
@@ -267,7 +277,7 @@ main div.blogText {
 
 footer {
   grid-area: footer;
-  border: var(--border);
+  border: var(--double-border);
   border-radius: var(--round-borders);
   overflow: hidden;
   font-size: 0.75em;
