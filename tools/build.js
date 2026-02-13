@@ -1,5 +1,6 @@
 const puppeteer = require ('puppeteer');
 const fs = require('fs').promises;
+const path = require('node:path');
 
 // THINGS WITHOUT OTHER FUNCTIONS
 
@@ -10,7 +11,7 @@ async function writeHTML(filepath, htmlStr) {
     await fileHandle.write(htmlStr);
   }
   catch (err) {
-    console.error('fucked up:', err)
+    console.error('failed writing:', err)
   }
   finally {
     if (fileHandle) {
@@ -22,16 +23,6 @@ async function getFileStrFromPath(filePath) {
   try {
     const str = await fs.readFile(filePath, 'utf8');
     return str
-  }
-  catch (err) {
-    console.error(err);
-  }
-}
-
-async function isDir(path) {
-  try {
-    const stats = await fs.stat(path);
-    return stats.isDirectory();
   }
   catch (err) {
     console.error(err);
@@ -54,18 +45,18 @@ function copySimpleFiles(srcDir, publicDir) {
   const FILE_WHITELIST = ['favicon.png', 'robots.txt', 'style.css'];
   
   for (let i = 0; i < FILE_WHITELIST.length; i++) {
-    fs.copyFile(srcDir + FILE_WHITELIST[i], publicDir + FILE_WHITELIST[i])
+    fs.copyFile(path.join(srcDir, FILE_WHITELIST[i]), path.join(publicDir, FILE_WHITELIST[i]));
   }
 }
 
-async function purgeDir(dir) {
+async function wipeDir(dir) {
   try {
     await fs.rm(dir, {recursive : true});}
   catch (err) {
     if (err.code !== 'ENOENT') {
       console.error(err);}}
   try {
-    await fs.mkdir('public');}
+    await fs.mkdir(dir);}
   catch (err) {
     if (err.code !== 'EEXIST') {
       console.error(err);}}
@@ -84,17 +75,12 @@ async function makeDir(path) {
 
 // THINGS USING OTHER FUNCS
 
-async function getRootDir() {
-  const rootPath = await getFileStrFromPath('./tools/root.txt');
-  return rootPath;
-}
-
 async function copyImages(srcDir, publicDir) {
   const CSS_FILENAME = 'style.css';
   htmlFiles = await getHTMLs(publicDir);
   htmlFiles.push(CSS_FILENAME);
   for (let i = 0; i < htmlFiles.length; i++) {
-    const fileStr = await getFileStrFromPath(publicDir + htmlFiles[i]);
+    const fileStr = await getFileStrFromPath(path.join(publicDir, htmlFiles[i]));
     let htmlImgs = fileStr.match(/(?<=<img src=")(.+?)(?=")/g);
     let cssImgs = fileStr.match(/(?<=url\(")(.+)(?="\))/g);
     if (i + 1 == htmlFiles.length) {
@@ -107,9 +93,9 @@ async function copyImages(srcDir, publicDir) {
     }
     for (let i = 0; i < imgMatches.length; i++) {
       imgMatchSuffix = imgMatches[i].replace('./', '');
-      imgFolder = publicDir + imgMatchSuffix.slice(0, imgMatchSuffix.search("/")); // this is super lazy
-      sourcePath = srcDir + imgMatchSuffix;
-      destPath = publicDir + imgMatchSuffix;
+      imgFolder = path.join(publicDir, path.join(imgMatchSuffix, '..'));
+      sourcePath = path.join(srcDir, imgMatchSuffix);
+      destPath = path.join(publicDir, imgMatchSuffix);
       await makeDir(imgFolder);
       try {
         await fs.copyFile(sourcePath, destPath); 
@@ -128,14 +114,14 @@ async function copyImages(srcDir, publicDir) {
 // MAIN
 
 async function main() {
-  // consts
-  const ROOT_DIR = await getRootDir();
-  const SRC_DIR = ROOT_DIR + 'src/';
-  const PUBLIC_DIR = ROOT_DIR + 'public/';
+  // paths :3
+  const ROOT_DIR = path.join(__dirname, '..'); // change if moving build.js up or down
+  const SRC_DIR = path.join(ROOT_DIR, 'src');
+  const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
   const FILE_PREFIX = 'file://'
 
   // nuke the public
-  await purgeDir(PUBLIC_DIR);
+  await wipeDir(PUBLIC_DIR);
 
   // defining browser elements
   const browser = await puppeteer.launch();
@@ -144,9 +130,9 @@ async function main() {
 
   // getting writing html files
   for (let i = 0; i < (Object.keys(htmlFiles).length); i++) {
-    await page.goto(FILE_PREFIX + SRC_DIR + htmlFiles[i]);
+    await page.goto(FILE_PREFIX + path.join(SRC_DIR, htmlFiles[i])); // idk how to properly do file_prefix
     const bodyHTML = await page.evaluate(() => document.documentElement.outerHTML);
-    await writeHTML(PUBLIC_DIR + htmlFiles[i], bodyHTML);
+    await writeHTML(path.join(PUBLIC_DIR, htmlFiles[i]), bodyHTML);
   }
 
   await browser.close();
