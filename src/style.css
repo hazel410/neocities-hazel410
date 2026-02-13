@@ -1,0 +1,346 @@
+/* -------------------------------------------------------- */
+/* VARIABLES */
+/* -------------------------------------------------------- */
+
+:root {
+  /* Named Colors */
+  --pink: #dc8add;
+  --off-black: #282828;
+  --lavender: #cda3dc;
+  --pastel-light-green: #8ff0a8;
+  --pastel-dark-green: #2ec27d;
+  --red-orange: #f66151;
+  --grape-purple: #613583;
+  --cream: #f5f5dc;
+
+  /* Background Colors: */
+  --global-background: var(--off-black);
+  --background-color: var(--global-background);
+  --content-background-color: var(--global-background);
+  --sidebar-background-color: var(--global-background);
+  --footer-background-color: var(--global-background);
+
+  /* Text Colors: */
+  --text-color: var(--cream);
+  --sidebar-text-color: var(--pastel-light-green);
+  --link-color: #3026e8;
+  --link-color-hover: #7780ec;
+  --sub-header-text-color: var(--lavender);
+  
+
+  /* Text: */
+  --font: Arial, sans-serif;
+  --heading-font: Georgia, serif;
+  --font-size: 14px;
+
+  /* Other Settings: */
+  --margin: 10px;
+  --grid-gap: 5px;
+  --padding: 15px;
+  --double-border: 4px double var(--grape-purple);
+  --single-border: 2px solid var(--grape-purple);
+  --round-borders: 0px;
+  --sidebar-width: 160px;
+}
+
+/* -------------------------------------------------------- */
+/* BASICS */
+/* -------------------------------------------------------- */
+
+body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  font-size: var(--font-size);
+  margin: 0;
+  padding: var(--margin);
+  color: var(--text-color);
+  font-family: var(--font);
+  line-height: 1.2;
+  background-image: url("./backgrounds/anistars.gif");
+  background-attachment: fixed;
+  overscroll-behavior: none;
+}
+
+::selection {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+smaller {
+  font-size: xx-small;
+}
+
+/* -------------------------------------------------------- */
+/* LAYOUT */
+/* -------------------------------------------------------- */
+
+.layout {
+  width: 1000px;
+  display: grid;
+  grid-gap: var(--grid-gap);
+  grid-template:
+    "header header" auto 
+    "leftSidebar main" auto 
+    "footer footer" auto 
+    / var(--sidebar-width) auto;
+}
+
+main {
+  grid-area: main;
+  overflow-y: auto;
+  padding: var(--padding);
+  background: var(--content-background-color);
+  border: var(--double-border);
+  border-radius: var(--round-borders);
+}
+
+/* -------------------------------------------------------- */
+/* HEADER */
+/* -------------------------------------------------------- */
+
+header {
+  grid-area: header;
+  font-size: 1.2em;
+  border: var(--double-border);
+  border-radius: var(--round-borders);
+  background: var(--global-background);
+  margin-top: 75px;
+  text-align: center;
+}
+
+header h3 {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-bottom: .25em;
+  line-height: 1.5;
+  text-align: center;
+  line-break: auto;
+  display: block;
+  text-decoration: wavy;
+  color: var(--sub-header-text-color);
+}
+
+header h5 {
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: .75;
+  text-align: center;
+  line-break: auto;
+  display: block;
+  font-weight: normal;
+}
+
+.header-content {
+  padding: var(--padding);
+  padding-bottom: 5px;
+}
+
+.header-title {
+  font-family: var(--heading-font);
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.header-image img {
+  width: 100%;
+  height: auto;
+}
+
+/* -------------------------------------------------------- */
+/* SIDEBARS */
+/* -------------------------------------------------------- */
+
+aside {
+  grid-area: aside;
+  font-size: medium;
+  border: var(--double-border);
+  border-radius: var(--round-borders);
+  overflow: hidden;
+  background: var(--sidebar-background-color);
+  padding: var(--padding);
+  color: var(--sidebar-text-color);
+}
+
+aside a:link {
+  color: var(--sidebar-text-color)
+}
+
+aside a:visited {
+  color: var(--pastel-dark-green);
+}
+
+aside a:hover {
+  color: var(--link-color-hover)
+}
+
+aside h4 {
+  font-family: var(--heading-font);
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: 2;
+  text-align: center;
+  line-break: auto;
+  display: block;
+  color: var(--text-color);
+}
+
+aside.left-sidebar {
+  grid-area: leftSidebar;
+}
+
+aside div.container {
+  display: flex;
+  width: auto;
+  height: 1em;
+  padding: 0;
+  padding-bottom: .25em;
+  padding-left: .4em;
+  border: 0;
+}
+
+aside div.nav-text {
+  flex-grow: 1;
+  height: auto;
+  padding: 0;
+  border: 0;
+  text-align: center;
+  display: block;
+  margin-left: .125em;
+}
+
+aside div.frame {
+  width: 1em;
+  height: 1em;
+  padding: 0;
+  border: 0;
+}
+
+aside div.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  object-position: center;
+}
+
+/* -------------------------------------------------------- */
+/* CONTENT */
+/* -------------------------------------------------------- */
+
+main {
+  line-height: 1.5;
+  overflow-y: auto;
+  min-height: 50vh;
+  max-height: 60vh;
+}
+
+main a, main a:visited {
+  color: var(--link-color);
+}
+
+main a:hover, main a:focus {
+  color: var(--link-color-hover);
+  text-decoration-style: wavy;
+}
+
+main div.contentGrid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  column-gap: 10px;
+}
+
+main div.gridEntry {
+  width: auto;
+  border: 20px solid transparent;
+  /* border-image: url(./other-imgs/red-sparkle.gif) 30 30 round; */
+  overflow: auto;
+  margin: 0px;
+}
+
+main div.blogTitle {
+  font-weight: bold;
+  font-size: xx-large;
+  padding-left: 10px;
+}
+
+main div.blogText {
+  border-top: var(--double-border);
+  padding-top: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* -------------------------------------------------------- */
+/* FOOTER */
+/* -------------------------------------------------------- */
+
+footer {
+  grid-area: footer;
+  border: var(--double-border);
+  border-radius: var(--round-borders);
+  overflow: hidden;
+  font-size: 0.75em;
+  padding: 15px;
+  background: var(--content-background-color);
+  display: flex;
+  justify-content: center;
+}
+
+/* -------------------------------------------------------- */
+/* MOBILE RESPONSIVE (Genuienly no idea how this works)*/ 
+/* -------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  .layout {
+    width: 100%;
+    grid-template: "header" auto  "main" auto "leftSidebar" auto "footer" auto / 1fr;
+  }
+
+
+  .right-sidebar {
+    display: none;
+  }
+
+  aside {
+    border-bottom: 1px solid;
+    padding: 9px;
+    font-size: 0.9em;
+  }
+
+
+  nav {
+    padding: 0;
+  }
+
+  nav > ul {
+    padding-top: 0.5em;
+  }
+
+  nav > ul li > a,
+  nav > ul li > details summary,
+  nav > ul li > strong {
+    padding: 0.5em;
+  }
+
+  main {
+    max-height: none;
+    padding: 15px;
+  }
+
+  .images {
+    flex-wrap: wrap;
+  }
+
+  .images img {
+    width: 100%;
+  }
+
+  #skip-to-content-link {
+  font-size: 1rem;
+  }
+}

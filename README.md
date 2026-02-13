@@ -5,8 +5,9 @@
 
 # TODO
 TASKS:
-- finish statics
-- begin content
+- figure out the workflow
+- define css styles for content
+- make content
 
 # inspo / resources
 - https://starrs.neocities.org/tinyspace/?e=/tinyspace/resources

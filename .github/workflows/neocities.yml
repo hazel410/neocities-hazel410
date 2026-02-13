@@ -4,7 +4,7 @@ name: Deploy to neocities
 on:
   push:
     branches:
-      - main
+      - testing
 
 concurrency: # prevent concurrent deploys doing strange things
   group: deploy-to-neocities
@@ -27,15 +27,14 @@ jobs:
     # If you have a different build process, replace this with your own build steps
     - name: Install deps and build
       run: |
-        npm i
-        npm run build
+        ./tools/build.js
     # When the dist_dir is ready, deploy it to neocities
     # Here we deploy the folder named `public`
     - name: Deploy to neocities
       uses: bcomnes/deploy-to-neocities@v3
       with:
         api_key: ${{ secrets.NEOCITIES_API_TOKEN }}
-        cleanup: false
+        cleanup: true
         neocities_supporter: false # set this to true if you have a supporter account and want to bypass unsuported files filter.
         preview_before_deploy: true # print a deployment plan prior to waiting for files to upload.
         dist_dir: public

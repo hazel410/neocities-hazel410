@@ -1,7 +1,7 @@
 // UTILS
 
 function capitalize(val) {
-    return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+  return String(val).charAt(0).toUpperCase() + String(val).slice(1);
 }
 
 function getNavDivider(dividerText) {
@@ -59,7 +59,7 @@ function loadMeta(doc) {
   document.getElementById(doc).innerHTML = html;
 }
 
-function loadHeader(doc, headings) {
+function loadHeader(doc, headings={}) {
   let html = '';
 
   /* update to use sanitizeUndef... maybe */
@@ -75,28 +75,28 @@ function loadHeader(doc, headings) {
 }
 
 function loadNavbar(doc) {
-  let navHTML = '';
+  let html = '';
   
   // Shrines
-  navHTML += getNavDivider('SHRINES');
-  navHTML += getNavBullet('balatro');
-  navHTML += getNavBullet('celeste');
-  navHTML += getNavBullet('deltarune');
-  navHTML += getNavBullet('factorio');
-  navHTML += getNavBullet('pokemon');
-  navHTML += getNavBullet('splatoon')
+  html += getNavDivider('SHRINES');
+  html += getNavBullet('balatro');
+  html += getNavBullet('celeste');
+  html += getNavBullet('deltarune');
+  html += getNavBullet('factorio');
+  html += getNavBullet('pokemon');
+  html += getNavBullet('splatoon');
 
   // Info
-  navHTML += getNavDivider('INFO');
-  navHTML += getNavBullet("about me");
+  html += getNavDivider('INFO');
+  html += getNavBullet("about me");
 
   // other
-  navHTML += getNavDivider('OTHER');
-  navHTML += getNavBullet("index", overides={text: "Home"});
-  navHTML += getNavBullet("cool links!");
-  navHTML += getNavBullet("useful links!");
+  html += getNavDivider('OTHER');
+  html += getNavBullet("index", overides={text: "Home"});
+  html += getNavBullet("cool links!");
+  html += getNavBullet("useful links!");
 
-  document.getElementById(doc).innerHTML = navHTML;
+  document.getElementById(doc).innerHTML = html;
 }
 
 function loadFooter(doc) {

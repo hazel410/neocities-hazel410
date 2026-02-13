@@ -3,7 +3,7 @@ from random import shuffle
 from colorthief import ColorThief
 
 
-BUTTON_DIR = "buttons"
+BUTTON_DIR = "src/buttons"
 TOOL_DIR = "tools"
 WORKING_DIR = os.getcwd()
 OUTPUT = "output.txt"
