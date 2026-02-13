@@ -3,7 +3,7 @@ name: Deploy to neocities
 on:
   push:
     branches:
-      - testing
+      - main
 
 concurrency: # prevent concurrent deploys doing strange things
   group: deploy-to-neocities
