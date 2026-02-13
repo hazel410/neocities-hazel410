@@ -3,15 +3,23 @@
 
 ```
 
+# Git Guide
+When done on testing, 
+```$ node ./tools/build.js
+$ git checkout main
+$ git merge testing
+$ git add . # ???
+$ git commit -m 'example'
+$ git push origin main```
+
 # TODO
 TASKS:
-- figure out the workflow
 - define css styles for content
 - make content
 
 # inspo / resources
 - https://starrs.neocities.org/tinyspace/?e=/tinyspace/resources
-- seafare neocties
+- https://seafare.neocities.org/
 - https://centiskor.ch/misc/cool-links/
 - https://petrapixel.neocities.org/
 - https://tackyvillain.neocities.org/aboutsite
@@ -20,5 +28,5 @@ TASKS:
 - https://pixelsafari.neocities.org/favicon/
 - https://codepen.io/sadness97/full/dPoEqNN
 - https://bettysgraphics.neocities.org/backgrounds
-- sadgirl?
+- https://sadgrl.online/resources/
 - https://nenrikido.neocities.org/blog/post/deploy-site/
