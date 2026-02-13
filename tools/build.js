@@ -127,12 +127,14 @@ async function main() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   const htmlFiles = await getHTMLs(SRC_DIR);
+  let dest;
 
   // getting writing html files
   for (let i = 0; i < (Object.keys(htmlFiles).length); i++) {
-    console.log(FILE_PREFIX + path.join(SRC_DIR, htmlFiles[i]));
-    console.log(FILE_PREFIX + SRC_DIR + htmlFiles[i]);
-    await page.goto(FILE_PREFIX + path.join(SRC_DIR, htmlFiles[i])); // idk how to properly do file_prefix
+    // dest = FILE_PREFIX + path.join(SRC_DIR, htmlFiles[i]);
+    dest = FILE_PREFIX + SRC_DIR + '/' + htmlFiles[i];
+    console.log(dest)
+    await page.goto(dest); // idk how to properly do file_prefix
     const bodyHTML = await page.evaluate(() => document.documentElement.outerHTML);
     await writeHTML(path.join(PUBLIC_DIR, htmlFiles[i]), bodyHTML);
   }
