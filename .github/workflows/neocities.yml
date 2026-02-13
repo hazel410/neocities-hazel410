@@ -1,6 +1,5 @@
 name: Deploy to neocities
 
-# only run on changes to main. Use main or master depending on whatever your default branch is called.
 on:
   push:
     branches:
@@ -29,6 +28,7 @@ jobs:
       run: |
         npm i
         node ./tools/build.js
+      working-directory: ./
     # When the dist_dir is ready, deploy it to neocities
     # Here we deploy the folder named `public`
     - name: Deploy to neocities

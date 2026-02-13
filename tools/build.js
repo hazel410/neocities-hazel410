@@ -85,7 +85,6 @@ async function makeDir(path) {
 // THINGS USING OTHER FUNCS
 
 async function getRootDir() {
-  console.log(process.cwd());
   const rootPath = await getFileStrFromPath('./tools/root.txt');
   return rootPath;
 }
