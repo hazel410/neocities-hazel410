@@ -1,5 +1,3 @@
-const { write } = require('b4a');
-const { FILE } = require('dns');
 const puppeteer = require ('puppeteer');
 const fs = require('fs').promises;
 
