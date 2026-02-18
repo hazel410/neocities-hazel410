@@ -20,14 +20,14 @@ function sanitizeUndef(unsanitized, fallback) {
   }
 }
 
-function sanitizeFileName(unsanitized) {
-  return (unsanitized.split(' ').join('-')).replaceAll('!', '');
+function sanitizeSpaces(unsanitized, replacer='-') {
+  return (unsanitized.split(' ').join(replacer)).replaceAll('!', '');
 }
 
 function getNavBullet(item, overides={}) {
   let navTEXT = sanitizeUndef(overides.text, capitalize(item));
-  let navIMG = sanitizeUndef(overides.image, './nav-icons/' + sanitizeFileName(item) + '.png');
-  let navLINK = sanitizeUndef(overides.link, './' + sanitizeFileName(item) + '.html');
+  let navIMG = sanitizeUndef(overides.image, './nav-icons/' + sanitizeSpaces(item) + '.png');
+  let navLINK = sanitizeUndef(overides.link, './' + sanitizeSpaces(item,'_') + '.html');
   let navTALT = sanitizeUndef(overides.textAlt, 'Go To ' + navLINK);
   let navIALT = sanitizeUndef(overides.imgAlt, navTEXT);
 
@@ -93,8 +93,10 @@ function loadNavbar(doc) {
   // other
   html += getNavDivider('OTHER');
   html += getNavBullet("index", overides={text: "Home"});
-  html += getNavBullet("cool links!");
-  html += getNavBullet("useful links!");
+  html += getNavBullet("cool links");
+  html += getNavBullet("useful links");
+  html += getNavBullet("buttons");
+  html += getNavBullet("credits");
 
   document.getElementById(doc).innerHTML = html;
 }

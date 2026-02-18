@@ -1,7 +1,4 @@
 # directory structure
-```
-
-```
 
 # Git Guide
 When done on testing, 
@@ -13,7 +10,10 @@ $ git commit -m 'example'
 $ git push origin main```
 
 # TODO
-TASKS:
+SMALLER GOALS:
+- make proper not_found.html
+- make about_me.html
+LONG TERM TASKS:
 - define css styles for content
 - make content
 
@@ -30,3 +30,5 @@ TASKS:
 - https://bettysgraphics.neocities.org/backgrounds
 - https://sadgrl.online/resources/
 - https://nenrikido.neocities.org/blog/post/deploy-site/
+- https://css-tricks.com/gradient-borders-in-css/
+- https://rainy.gay/buttons/buttons

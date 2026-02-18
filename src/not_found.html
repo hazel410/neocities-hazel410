@@ -1,13 +1,42 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Not Found</title>
-    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+<html lang="en">
+
+  <head id="metaJS">
+    <!-- DECLARING SCRIPTS -->
+    <script src="./static-elements.js"></script>
+
+    <!-- META INFO -->
+    <script>loadMeta("metaJS");</script>
   </head>
+  
   <body>
-    <h1>Page Not Found</h1>
-    <p>The requested page was not found.</p>
+    <div class="layout">
+      <!-- MAIN CONTENT -->
+      <main id="content">
+        <div id="center">
+          This page is under construction<br>
+          Check back later! :3<br>
+          <img src="buttons/under-construction.png" alt="under-construction">
+        </div>
+      </main>
+
+      <!-- HEADER -->
+      <header>
+        <div class="header-content">
+          <div id="headerJS"></div>
+          <script>loadHeader("headerJS", {h2: "Not Found"});</script>
+        </div>
+      </header>
+
+      <!-- PERSISTENT CONTENT -->
+      <aside class="left-sidebar">
+        <div id="navbarJS"></div>
+        <script>loadNavbar("navbarJS");</script>
+      </aside>
+      <footer>
+        <div id="footerJS"></div>
+        <script>loadFooter("footerJS")</script>
+      </footer>
+    </div>
   </body>
 </html>

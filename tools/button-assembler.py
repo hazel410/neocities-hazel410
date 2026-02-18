@@ -2,33 +2,29 @@ import os
 from random import shuffle
 from colorthief import ColorThief
 
-
-BUTTON_DIR = "src/buttons"
-TOOL_DIR = "tools"
-WORKING_DIR = os.getcwd()
-OUTPUT = "output.txt"
-BLACKLIST = "button-blacklist.txt"
-SLASH = "/" # in case this matters on windows
-BREAK = "\n"
-HTML_A = "<img src=\"" + BUTTON_DIR + SLASH
-HTML_B = "\" alt=\""
-HTML_C = "\">"
-IS_DEBUG = False
-
 def main():
-  button_list = os.listdir(WORKING_DIR + SLASH + BUTTON_DIR)
-  with open(WORKING_DIR + SLASH + TOOL_DIR + SLASH + OUTPUT, "w") as f:
-    blacklist = get_blacklist()
-    button_list = sort_buttons(button_list, 2)
+  WORKING_DIR = os.getcwd()
+  HTML_SRC_DIR = 'buttons/'
+  OUTPUT_TXT_PATH = WORKING_DIR + '/tools/output.txt'
+  BLACKLIST_TXT_PATH = WORKING_DIR + '/tools/button-blacklist.txt'
+  BUTTONS_DIR = WORKING_DIR + '/src/buttons/'
+  LINE_BREAK = '\n'
+  button_list = os.listdir(WORKING_DIR + "/src/buttons/")
+
+  with open(OUTPUT_TXT_PATH, "w") as f:
+    blacklist = get_blacklist(BLACKLIST_TXT_PATH)
+    button_list = sort_buttons(button_list, 1, BUTTONS_DIR)
     for button in button_list:
       if button not in blacklist:
-        f.write(format_html(button) + BREAK)
+        f.write(format_html(HTML_SRC_DIR + button) + LINE_BREAK)
 
-def format_html(file_string):
-  return HTML_A + file_string + HTML_B + os.path.splitext(file_string)[0] + HTML_C
+def format_html(html_src):
+  file_name = (os.path.splitext(html_src)[0]).replace("-" , " ")
+  file_name = file_name[file_name.rfind("/") + 1:len(file_name)]
+  return f'<img src="{html_src}" alt="{file_name}" title="{file_name}">'
 
-def get_blacklist():
-  with open(WORKING_DIR + SLASH + TOOL_DIR + SLASH + BLACKLIST, "r") as f:
+def get_blacklist(path):
+  with open(path, "r") as f:
     raw = f.readlines()
     blacklist = [""] * len(raw)
     for index in range(len(raw)):
@@ -62,12 +58,14 @@ def rgb_to_hsv(rgb):
   h = (h/6.0) % 1.0
   return (h * 360, s * 100, v * 100)
 
-def sort_buttons(buttons: list, sort_type):
+def sort_buttons(buttons: list, sort_type: int, button_dir):
   """
   sorttype \n
   0: alphabetical \n
   1: average rgb
+  2: randomize
   """
+  IS_DEBUG = False
   match sort_type:
     case 0:
       return buttons.sort()
@@ -75,7 +73,7 @@ def sort_buttons(buttons: list, sort_type):
       rgbs = [""] * len(buttons)
       hsvs = [""] * len(buttons)
       for index in range(len(buttons)):
-        rgbs[index] = get_dominant_rgb(BUTTON_DIR + SLASH + buttons[index])
+        rgbs[index] = get_dominant_rgb(button_dir + buttons[index])
         hsvs[index] = rgb_to_hsv(rgbs[index])
         if IS_DEBUG:
           test_get_dominant_rgb(buttons[index], rgbs[index])

@@ -4,28 +4,57 @@
 
 :root {
   /* Named Colors */
-  --pink: #dc8add;
-  --off-black: #282828;
-  --lavender: #cda3dc;
-  --pastel-light-green: #8ff0a8;
-  --pastel-dark-green: #2ec27d;
-  --red-orange: #f66151;
-  --grape-purple: #613583;
-  --cream: #f5f5dc;
+  --off-black: rgb(40, 40, 40);
+  --medium-off-black: rgb(30, 30, 30);
+  --darker-off-black: rgb(20, 20, 20);
+
+  --lavender: rgb(205, 163, 220);
+  --pink: rgb(220, 138, 221);
+  --cream: rgb(245, 245, 220);
+  --red-orange: rgb(246, 97, 81);
+  --grape-purple: rgb(97, 53, 131);
+
+  --pastel-light-green: rgb(143, 240, 168);
+  --pastel-dark-green: rgb(46, 194, 125);
+  --dark-green: rgb(0, 100, 0);
+  --darker-green: rgb(0, 75, 0);
+
+  --rainbow-red: rgb(255, 0, 0);
+  --rainbow-orange: rgb(255, 165, 0);
+  --rainbow-yellow: rgb(255, 255, 0);
+  --rainbow-green: rgb(0, 128, 0);
+  --rainbow-blue: rgb(0, 0, 255);
+  --rainbow-indigo: rgb(75, 0, 130);
+  --rainbow-violet: rgb(238, 130, 238);
+  --rainbow-gradient: linear-gradient(
+      45deg, 
+      var(--rainbow-red), 
+      var(--rainbow-orange), 
+      var(--rainbow-yellow), 
+      var(--rainbow-green), 
+      var(--rainbow-blue), 
+      var(--rainbow-indigo), 
+      var(--rainbow-violet));
 
   /* Background Colors: */
-  --global-background: var(--off-black);
+  --global-background: var(--medium-off-black);
   --background-color: var(--global-background);
   --content-background-color: var(--global-background);
   --sidebar-background-color: var(--global-background);
   --footer-background-color: var(--global-background);
 
-  /* Text Colors: */
-  --text-color: var(--cream);
+  /* old link colors: */
+  --color-link: var(--pastel-light-green);
+  --color-link-visited: var(--pastel-dark-green);
+
+  /* standardized colors */
+  --border-color: var(--darker-green);
+  
+  --text-color: white;
   --sidebar-text-color: var(--pastel-light-green);
-  --link-color: #3026e8;
-  --link-color-hover: #7780ec;
   --sub-header-text-color: var(--lavender);
+
+  --accent-color: var(--grape-purple);
   
 
   /* Text: */
@@ -36,10 +65,11 @@
   /* Other Settings: */
   --margin: 10px;
   --grid-gap: 5px;
-  --padding: 15px;
-  --double-border: 4px double var(--grape-purple);
-  --single-border: 2px solid var(--grape-purple);
-  --round-borders: 0px;
+  --padding: 1vh;
+  --double-border: 4px double var(--border-color);
+  --single-border: 2px solid var(--border-color);
+  --rainbow-border: 10px solid var(--rainbow-gradient);
+  --round-borders: 15px;
   --sidebar-width: 160px;
 }
 
@@ -69,6 +99,10 @@ body {
 
 smaller {
   font-size: xx-small;
+}
+
+div.center {
+  text-align: center;
 }
 
 /* -------------------------------------------------------- */
@@ -105,7 +139,7 @@ header {
   border: var(--double-border);
   border-radius: var(--round-borders);
   background: var(--global-background);
-  margin-top: 75px;
+  margin-top: 3vh;
   text-align: center;
 }
 
@@ -168,11 +202,11 @@ aside a:link {
 }
 
 aside a:visited {
-  color: var(--pastel-dark-green);
+  color: var(--color-link-visited);
 }
 
 aside a:hover {
-  color: var(--link-color-hover)
+  font-style: italic;
 }
 
 aside h4 {
@@ -231,8 +265,9 @@ aside div.frame img {
 main {
   line-height: 1.5;
   overflow-y: auto;
-  min-height: 50vh;
-  max-height: 60vh;
+  overflow-x: hidden;
+  min-height: 60vh;
+  max-height: 75vh;
 }
 
 main a, main a:visited {
@@ -244,29 +279,114 @@ main a:hover, main a:focus {
   text-decoration-style: wavy;
 }
 
-main div.contentGrid {
+main div.rainbow-linebreak-wrap {
+  width: 1fr;
+  padding: 3rem;
+  background: var(--rainbow-gradient);
+  padding: 3px;
+  border-radius: var(--round-borders);
+  width: 1fr;
+  margin-bottom: 1rem;
+}
+
+main div.rainbow-linebreak {
+  font-size: 2em;
+  font-style: italic;
+  background: var(--background-color);
+  border-radius: var(--round-borders);
+}
+
+main div.rainbow-box-wrap {
+  width: 1fr;
+  padding: 3rem;
+  background: var(--rainbow-gradient);
+  padding: 3px;
+  border-radius: var(--round-borders);
+  margin-bottom: 1rem;
+}
+
+main div.rainbow-box {
+  font-size: 2em;
+  font-style: italic;
+  background: var(--background-color);
+  border-radius: var(--round-borders);
+}
+
+main div.GridImg2Text3 {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 40% 60%;
+  column-gap: 20px;
+  padding: 10px;
+  font-size: 2em;
+  overflow: hidden;
+}
+
+main div.EntryImg2Text3 {
+  width: auto;
+  margin: 0px;
+}
+
+main div.GridImg2Text3 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border: var(--single-border); 
+  border-color: var(--accent-color);
+}
+
+main div.Text3 {
+  width: auto;
+}
+
+main div.grid-thirds {
+  display: grid;
+  box-sizing: border-box;
+  grid-template-columns: 3fr 3fr 3fr;
+  column-gap: 10px;
+  overflow: hidden;
+}
+
+main div.grid-thirds-entry {
+  width: 100%;
+  overflow: hidden;
+  margin: 0px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+main div.content-grid {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr;
   column-gap: 10px;
 }
 
-main div.gridEntry {
+main div.content-grid-entry {
+  box-sizing: border-box;
   width: auto;
-  border: 20px solid transparent;
-  /* border-image: url(./other-imgs/red-sparkle.gif) 30 30 round; */
   overflow: auto;
   margin: 0px;
 }
 
 main div.blogTitle {
+  box-sizing: border-box;
   font-weight: bold;
-  font-size: xx-large;
   padding-left: 10px;
+  border-radius: 10px;
+  border-image-slice: 1;
+  font-size: 2em;
+  background: var(--background-color);
+  border-radius: var(--round-borders);
 }
 
 main div.blogText {
-  border-top: var(--double-border);
-  padding-top: 5px;
+  box-sizing: border-box;
+  /* border-top: var(--double-border); */
+  border: var(--rainbow-border);
+  border-image-slice: 1c;
+  padding-top: .5em;
+  padding-bottom: 1em;
   margin-left: 10px;
   margin-right: 10px;
 }
