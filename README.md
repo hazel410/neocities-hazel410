@@ -3,6 +3,9 @@
 # Git Guide
 When done on testing, 
 ```$ node ./tools/build.js
+$ git add .
+$ git commit -m 'wtv the fuck'
+$ git push origin testing
 $ git checkout main
 $ git merge testing
 $ git add . # ???
