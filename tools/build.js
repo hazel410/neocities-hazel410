@@ -115,10 +115,10 @@ async function copyImages(srcDir, publicDir) {
 
 async function main() {
   // paths :3
-  const ROOT_DIR = path.join(__dirname, '..'); // change if moving build.js up or down
+  const ROOT_DIR = path.join(__dirname, "..");
   const SRC_DIR = path.join(ROOT_DIR, 'src');
   const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
-  const FILE_PREFIX = 'file://'
+  const FILE_PREFIX = 'file://' // idk how to "properly" do this
 
   // nuke the public
   await wipeDir(PUBLIC_DIR);
@@ -132,8 +132,7 @@ async function main() {
   // getting writing html files
   for (let i = 0; i < (Object.keys(htmlFiles).length); i++) {
     dest = FILE_PREFIX + path.join(SRC_DIR, htmlFiles[i]);
-    // dest = FILE_PREFIX + SRC_DIR + '/' + htmlFiles[i];
-    await page.goto(dest); // idk how to properly do file_prefix
+    await page.goto(dest);
     const bodyHTML = await page.evaluate(() => document.documentElement.outerHTML);
     await writeHTML(path.join(PUBLIC_DIR, htmlFiles[i]), bodyHTML);
   }

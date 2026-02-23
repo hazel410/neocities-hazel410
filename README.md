@@ -2,15 +2,10 @@
 
 # Git Guide
 When done on testing, 
-```$ node ./tools/build.js
-$ git add .
-$ git commit -m 'wtv the fuck'
-$ git push origin testing
-$ git checkout main
-$ git merge testing
-$ git add . # ???
-$ git commit -m 'example'
-$ git push origin main```
+```git checkout testing
+git merge -s ours main
+git checkout main
+git merge testing```
 
 # TODO
 SMALLER GOALS:
@@ -20,18 +15,40 @@ LONG TERM TASKS:
 - define css styles for content
 - make content
 
-# inspo / resources
-- https://starrs.neocities.org/tinyspace/?e=/tinyspace/resources
+# cool sites
+- https://starrs.neocities.org/tinyspace/
 - https://seafare.neocities.org/
 - https://centiskor.ch/misc/cool-links/
 - https://petrapixel.neocities.org/
 - https://tackyvillain.neocities.org/aboutsite
-- https://freyas-files.nekoweb.org/index.html
-- https://dollarchive.neocities.org/compendium/spine/borders
-- https://pixelsafari.neocities.org/favicon/
-- https://codepen.io/sadness97/full/dPoEqNN
-- https://bettysgraphics.neocities.org/backgrounds
+- https://nonexistentfandomsfandom.neocities.org/
+
+
+turotials:
 - https://sadgrl.online/resources/
 - https://nenrikido.neocities.org/blog/post/deploy-site/
 - https://css-tricks.com/gradient-borders-in-css/
-- https://rainy.gay/buttons/buttons
+
+multiple graphics:
+- https://pixelsafari.neocities.org/favicon/ (everything lowkey)
+- https://dollarchive.neocities.org/compendium (decorations)
+
+backgrounds:
+- https://bettysgraphics.neocities.org/backgrounds
+- https://codepen.io/sadness97/full/dPoEqNN
+
+88x31: 
+- https://88x31.nl/index.html
+- https://cyber.dabamos.de/88x31/
+- https://rainy.gay/pride/pridebuttons
+- https://anlucas.neocities.org/88x31Buttons
+- https://yesterweb.org/graphics/buttons
+- https://capstasher.neocities.org/88x31collection-page1
+- https://dannarchy.com/now
+88x31 (not searched):
+- https://hellnet.work/8831/
+- https://skye.sh/88x31/page1
+- https://neonaut.neocities.org/cyber/88x31
+- https://88by31.neocities.org/
+- https://exo.pet/
+- https://88x31.kate.pet/

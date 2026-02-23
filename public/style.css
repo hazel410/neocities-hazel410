@@ -56,7 +56,6 @@
 
   --accent-color: var(--grape-purple);
   
-
   /* Text: */
   --font: Arial, sans-serif;
   --heading-font: Georgia, serif;
@@ -65,7 +64,7 @@
   /* Other Settings: */
   --margin: 10px;
   --grid-gap: 5px;
-  --padding: 1vh;
+  --padding: .5em;
   --double-border: 4px double var(--border-color);
   --single-border: 2px solid var(--border-color);
   --rainbow-border: 10px solid var(--rainbow-gradient);
@@ -99,10 +98,6 @@ body {
 
 smaller {
   font-size: xx-small;
-}
-
-div.center {
-  text-align: center;
 }
 
 /* -------------------------------------------------------- */
@@ -139,7 +134,7 @@ header {
   border: var(--double-border);
   border-radius: var(--round-borders);
   background: var(--global-background);
-  margin-top: 3vh;
+  margin-top: 1em;
   text-align: center;
 }
 
@@ -194,7 +189,7 @@ aside {
   overflow: hidden;
   background: var(--sidebar-background-color);
   padding: var(--padding);
-  color: var(--sidebar-text-color);
+  color: var(--pastel-dark-green);
 }
 
 aside a:link {
@@ -202,7 +197,7 @@ aside a:link {
 }
 
 aside a:visited {
-  color: var(--color-link-visited);
+  color: var(--sidebar-text-color);
 }
 
 aside a:hover {
@@ -226,32 +221,38 @@ aside.left-sidebar {
 
 aside div.container {
   display: flex;
-  width: auto;
+  justify-content: center;
   height: 1em;
-  padding: 0;
   padding-bottom: .25em;
   padding-left: .4em;
-  border: 0;
 }
 
-aside div.nav-text {
-  flex-grow: 1;
+aside div.nav-flex-grid {
+  display: flex;
+  justify-content: center;
+  height: 1em;
+  padding-bottom: .25em;
+  padding-left: .4em;
+}
+
+aside div.nav-flex-text {
   height: auto;
   padding: 0;
   border: 0;
   text-align: center;
   display: block;
   margin-left: .125em;
+  flex-basis: 70%;
 }
 
-aside div.frame {
+aside div.nav-flex-frame {
   width: 1em;
   height: 1em;
   padding: 0;
   border: 0;
 }
 
-aside div.frame img {
+aside div.nav-flex-frame img {
   width: 100%;
   height: 100%;
   object-fit: scale-down;
@@ -266,8 +267,9 @@ main {
   line-height: 1.5;
   overflow-y: auto;
   overflow-x: hidden;
-  min-height: 60vh;
-  max-height: 75vh;
+  height: 625px;
+  /* min-height: 60vh;
+  max-height: 75vh; */
 }
 
 main a, main a:visited {
@@ -276,17 +278,16 @@ main a, main a:visited {
 
 main a:hover, main a:focus {
   color: var(--link-color-hover);
-  text-decoration-style: wavy;
+  /* text-decoration-style: wavy; */
 }
 
 main div.rainbow-linebreak-wrap {
   width: 1fr;
-  padding: 3rem;
-  background: var(--rainbow-gradient);
   padding: 3px;
+  background: var(--rainbow-gradient);
   border-radius: var(--round-borders);
-  width: 1fr;
-  margin-bottom: 1rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 main div.rainbow-linebreak {
@@ -389,6 +390,17 @@ main div.blogText {
   padding-bottom: 1em;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+main div.buttons {
+  height: 100%;
+  line-height: 0;
+  text-align: center;
+  align-content: center;
+}
+
+main div.buttons img {
+  padding: 0px;
 }
 
 /* -------------------------------------------------------- */
