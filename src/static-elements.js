@@ -167,9 +167,9 @@ function loadAllButtons(doc) {
   /* etc pride */
   html += getButton('youre-telling-me-a-queer-coded-this.png');
   html += getButton('pridenow.gif');
+  html += getButton('diy-hrt.png');
 
   /* irl pol */
-  html += getButton('diy-hrt.png');
   html += getButton('no-nazi-no-fascism-no-racism.gif');
   html += getButton('free-palestine.gif');
   html += getButton('acab.gif');
@@ -178,6 +178,7 @@ function loadAllButtons(doc) {
   html += getButton('i-support-right-to-repair.png');
 
   /* web pol */
+  html += getButton('made-with-love.png');
   html += getButton('100-percent-human-0-percent-ai.png');
   html += getButton('made-on-gnu-linux.gif');
   html += getButton('just-use-png.gif');
