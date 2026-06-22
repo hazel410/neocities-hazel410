@@ -375,9 +375,6 @@ main div.content-grid-entry {
 
 main div.content-grid-entry img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
 }
 
 main div.blogTitle {
