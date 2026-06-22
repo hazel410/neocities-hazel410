@@ -1,4 +1,4 @@
-# hazel's hideaway!
+# [hazel's hideaway!](https://hazel410.neocities.org/)
 website yippie
 
 <!-- # Git Guide
@@ -12,7 +12,7 @@ git merge testing``` -->
 - add pages for all the broken links
 - restructure architecture (inspo from showdown?)
 - rework website visuals
-- other stuff...
+- other stuff..
 
 # cool sites
 - https://starrs.neocities.org/tinyspace/
@@ -21,7 +21,6 @@ git merge testing``` -->
 - https://petrapixel.neocities.org/
 - https://tackyvillain.neocities.org/aboutsite
 - https://nonexistentfandomsfandom.neocities.org/
-
 
 turotials:
 - https://sadgrl.online/resources/
