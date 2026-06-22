@@ -142,6 +142,8 @@ async function main() {
   // copying other stuffs
   copySimpleFiles(SRC_DIR, PUBLIC_DIR);
   await copyImages(SRC_DIR, PUBLIC_DIR);
+
+  console.log('status: success!')
 }
 
 main();

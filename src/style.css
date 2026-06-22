@@ -92,8 +92,12 @@ body {
   overscroll-behavior: none;
 }
 
+a:hover {
+  font-style: italic;
+}
+
 ::selection {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(238, 130, 238, 0.5);
 }
 
 smaller {
@@ -292,7 +296,6 @@ main div.rainbow-linebreak-wrap {
 
 main div.rainbow-linebreak {
   font-size: 2em;
-  font-style: italic;
   background: var(--background-color);
   border-radius: var(--round-borders);
 }
@@ -436,11 +439,19 @@ footer {
   border: var(--double-border);
   border-radius: var(--round-borders);
   overflow: hidden;
-  font-size: 0.75em;
+  font-size: 1.25em;
   padding: 15px;
   background: var(--content-background-color);
   display: flex;
   justify-content: center;
+}
+
+footer a:link {
+  color: var(--text-color);
+}
+
+footer a:visited {
+  color: var(--text-color);
 }
 
 /* -------------------------------------------------------- */

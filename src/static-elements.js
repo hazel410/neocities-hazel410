@@ -113,12 +113,12 @@ function loadNavbar(doc) {
   let html = '';
   
   // Shrines
-  html += getNavDivider('SHRINES');
+  html += getNavDivider('AUTISM');
   html += getNavBullet('balatro', overides={isBroken: true});
   html += getNavBullet('celeste');
   html += getNavBullet('deltarune', overides={isBroken: true});
   html += getNavBullet('factorio', overides={isBroken: true});
-  html += getNavBullet('pokemon', overides={isBroken: true});
+  html += getNavBullet('pokemon');
   html += getNavBullet('splatoon', overides={isBroken: true});
 
   // Info
@@ -137,7 +137,7 @@ function loadNavbar(doc) {
 }
 
 function loadFooter(doc) {
-  let html = 'IDK WHAT TO PUT HERE YET :3';
+  let html = `source hosted on <a href="https://www.github.com/hazel410/neocities-hazel410">github</a>`;
   document.getElementById(doc).innerHTML = html;
 }
 
@@ -158,73 +158,106 @@ function loadLinkedButtons (doc) {
 
 function loadAllButtons(doc) {
   let html = '';
-  
+  let buttonFiles = [];
+
   /* flags */
-  html += getButton('trans-flag.png');
-  html += getButton('polyamorous-flag.png');
-  html += getButton('lesbian-flag.png');
+  buttonFiles.push([
+    'trans-flag.png',
+    'polyamorous-flag.png',
+    'lesbian-flag.png',
+    // 'nonbinary-flag.png',
+    // 'genderqueer-flag.png',
+    'autistic-pride-flag-websafe-infinity.png',
+    'autistic-pride-flag-tbh-creature.png',
+    'trans-flag-blahaj.png',
+  ]);
 
   /* etc pride */
-  html += getButton('youre-telling-me-a-queer-coded-this.png');
-  html += getButton('pridenow.gif');
-  html += getButton('diy-hrt.png');
+  buttonFiles.push([
+    'youre-telling-me-a-queer-coded-this.png',
+    'pridenow.gif',
+    'diy-hrt.png',
+  ]);
 
   /* irl pol */
-  html += getButton('no-nazi-no-fascism-no-racism.gif');
-  html += getButton('free-palestine.gif');
-  html += getButton('acab.gif');
-  html += getButton('legalise-it-now.gif');
-  html += getButton('melt-ice.gif');
-  html += getButton('i-support-right-to-repair.png');
+  buttonFiles.push([
+    'no-nazi-no-fascism-no-racism.gif',
+    'free-palestine.gif',
+    'acab.gif',
+    'legalise-it-now.gif',
+    'melt-ice.gif',
+    'i-support-right-to-repair.png',
+  ]);
 
   /* web pol */
-  html += getButton('made-with-love.png');
-  html += getButton('100-percent-human-0-percent-ai.png');
-  html += getButton('made-on-gnu-linux.gif');
-  html += getButton('just-use-png.gif');
-  html += getButton('neocities-now.png');
-  html += getButton('internet-archive.gif');
-  html += getButton('this-is-an-anti-ai-site.gif');
-  html += getButton('lets-get-physical.gif');
-  html += getButton('piracy-now.gif');
-  html += getButton('i-hate-microsoft.png');
-  html += getButton('ublock-origin-now.png');
-  html += getButton('css-is-awesome.png');
+  buttonFiles.push([
+    '100-percent-human-0-percent-ai.png',
+    'made-on-gnu-linux.gif',
+    'just-use-png.gif',
+    'neocities-now.png',
+    'internet-archive.gif',
+    'this-is-an-anti-ai-site.gif',
+    'lets-get-physical.gif',
+    'piracy-now.gif',
+    'i-hate-microsoft.png',
+    'ublock-origin-now.png',
+    'css-is-awesome.png',
+  ]);
 
   /* tenders */
-  html += getButton('gameboy-advance.png');
-  html += getButton('ds-logo.png');
-  html += getButton('3ds-logo.png');
-  html += getButton('gamecube-logo.png');
-  html += getButton('wii-logo.png');
+  buttonFiles.push([
+    'gameboy-advance.png',
+    'ds-logo.png',
+    '3ds-logo.png',
+    'gamecube-logo.png',
+    'wii-logo.png',
+  ]);
 
   /* gayming */
-  html += getButton('wanna-be-a-big-shot.gif');
-  html += getButton('kris-where-tf-are-we.png');
-  html += getButton('stardew-valley.gif');
-  html += getButton('pokemon.gif');
-  html += getButton('bad-apple.gif');
-  html += getButton('ralsei-smoking-a-blunt.gif');
-  html += getButton('windose20.png');
+  buttonFiles.push([
+    'wanna-be-a-big-shot.gif',
+    'kris-where-tf-are-we.png',
+    'stardew-valley.gif',
+    'pokemon.gif',
+    'bad-apple.gif',
+    'ralsei-smoking-a-blunt.gif',
+    'windose20.png',
+  ]);
 
   /* sillies */
-  html += getButton('ban-time-travel-now.gif');
-  html += getButton('best-viewed-with-a-computer.gif');
-  html += getButton('under-construction.png');
-  html += getButton('graphic-design.gif');
-  html += getButton('i-like-computer.png');
-  html += getButton('css-is-difficult.gif');
-  html += getButton('toe-beans-now.gif');
-  html += getButton('just-a-blank-button.gif');
-  html += getButton('made-with-my-own-two-paws.gif');
-  html += getButton('cereal-rainbow-cat.png');
-  html += getButton('adhd.png');
-  html += getButton('dont-click-here-no.png', link='https://en.wikipedia.org/wiki/Reverse_psychology');
-  html += getButton('this-site-is-miku-approved.gif');
-  html += getButton('powered-by-a-mouse-in-a-wheel.gif');
-  html += getButton('best-viewed-with-open-eyes.gif');
-  html += getButton('powered-by-the-void.gif');
-  html += getButton('warning-this-site-is-canon.gif');
-  
+  buttonFiles.push([
+    'ban-time-travel-now.gif',
+    'best-viewed-with-a-computer.gif',
+    'under-construction.png',
+    'graphic-design.gif',
+    'i-like-computer.png',
+    'css-is-difficult.gif',
+    'toe-beans-now.gif',
+    'blank-raised-button.png',
+    'made-with-my-own-two-paws.gif',
+    'cereal-rainbow-cat.png',
+    'adhd.png',
+    'dont-click-here-no.png -link=https://en.wikipedia.org/wiki/Reverse_psychology',
+    'this-site-is-miku-approved.gif',
+    'powered-by-a-mouse-in-a-wheel.gif',
+    'best-viewed-with-open-eyes.gif',
+    'powered-by-the-void.gif',
+    'warning-this-site-is-canon.gif',
+  ]);
+
+  for(let i = 0; i < buttonFiles.length; i++) {
+    for(let j = 0; j < buttonFiles[i].length; j++) {
+      let item = buttonFiles[i][j];
+      let linkIndex = item.indexOf(' -link=');
+      if (linkIndex == -1) {
+        html += getButton(item);
+      } else {
+        let buttonLink = item.slice(linkIndex + 7)
+        html += getButton(item.slice(0, item.indexOf(' ')), link=buttonLink)
+        console.log(item.slice(linkIndex + 7));
+      }
+    }
+  }
+
   document.getElementById(doc).innerHTML = html;
 }
