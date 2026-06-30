@@ -75,28 +75,48 @@ async function makeDir(path) {
 
 // THINGS USING OTHER FUNCS
 
-async function copyImages(srcDir, publicDir) {
+async function copyAssets(srcDir, publicDir) {
   const CSS_FILENAME = 'style.css';
+
   htmlFiles = await getHTMLs(publicDir);
-  htmlFiles.push(CSS_FILENAME);
+  htmlFiles.push(CSS_FILENAME); // sloppy solution to also copy things refferenced in css
+  
   for (let i = 0; i < htmlFiles.length; i++) {
+    // loop preamble. we're getting the raw file contents in a string, then checking
+    // if it contains image or audio paths
     const fileStr = await getFileStrFromPath(path.join(publicDir, htmlFiles[i]));
-    let htmlImgs = fileStr.match(/(?<=<img src=")(.+?)(?=")/g);
+    let htmlAssets = fileStr.match(/(?<=src=")(.+?)(?=")/g); 
     let cssImgs = fileStr.match(/(?<=url\(")(.+)(?="\))/g);
+    let htmlAudios = fileStr.match(/(?<=<audio src=")(.+?)(?=")/g); ;
+    
+    // if we're at the end of the html files 
+    // (i.e. the appended css file) pay attention to cssImg matches only
+    // else the asset list is htmlImg + htmlAudio matches only  
     if (i + 1 == htmlFiles.length) {
-      imgMatches = cssImgs;
+      assetList = cssImgs;
     } else {
-      imgMatches = htmlImgs;
+      assetList = htmlAssets; // funky shorthand of joining lists
     }
-    if (imgMatches == null) {
-      imgMatches = [];
+
+    // if we have no matches, sanitize the list
+    if (assetList == null) {
+      assetList = [];
     }
-    for (let i = 0; i < imgMatches.length; i++) {
-      imgMatchSuffix = imgMatches[i].replace('./', '');
-      imgFolder = path.join(publicDir, path.join(imgMatchSuffix, '..'));
-      sourcePath = path.join(srcDir, imgMatchSuffix);
-      destPath = path.join(publicDir, imgMatchSuffix);
-      await makeDir(imgFolder);
+
+    // now for each asset...
+    for (let i = 0; i < assetList.length; i++) {
+      // sanitize the asset path, then get the src/dest paths in the form
+      // "src/exampleFolder/example.wav" / "public/exampleFolder/example.wav"
+      // (i think)
+      assetMatch = assetList[i].replace('./', '');
+      assetFolder = path.join(publicDir, path.join(assetMatch, '..'));
+      sourcePath = path.join(srcDir, assetMatch);
+      destPath = path.join(publicDir, assetMatch);
+      
+      // try to make directory of asset
+      await makeDir(assetFolder);
+
+      // then try to copy it
       try {
         await fs.copyFile(sourcePath, destPath); 
       }
@@ -141,7 +161,7 @@ async function main() {
 
   // copying other stuffs
   copySimpleFiles(SRC_DIR, PUBLIC_DIR);
-  await copyImages(SRC_DIR, PUBLIC_DIR);
+  await copyAssets(SRC_DIR, PUBLIC_DIR);
 
   console.log('status: success!')
 }
